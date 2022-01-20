@@ -1,0 +1,30 @@
+<form (ngSubmit)="OnSubmit()" [formGroup]="userRegisterForm">
+    <fieldset>
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name">
+    </fieldset>
+    <div class="error" *ngIf="!userRegisterForm.get('name')?.valid &&
+    (userRegisterForm.get('name')?.touched || submitted)">
+        Has introducido mal tu nombre
+    </div>
+
+    <fieldset>
+        <label for="password"> Password:</label>
+        <input type="password" id="password" formControlName="password">
+    </fieldset>
+    <div class="error" *ngIf="!userRegisterForm.get('password')?.valid &&
+    (userRegisterForm.get('password')?.dirty || submitted)">
+        Has introducido mal tu contraseña
+    </div>
+
+    <fieldset>
+        <label for="passwordRepeat"> Repeat Password:</label>
+        <input type="password" id="passwordRepeat" formControlName="passwordRepeat">
+    </fieldset>
+    <div class="error" *ngIf="!userRegisterForm.get('passwordRepeat')?.valid &&
+    (userRegisterForm.get('passwordRepeat')?.dirty || submitted)">
+        Has introducido mal tu contraseña
+    </div>
+
+    <button [disabled]="!userRegisterForm.valid">Send User</button>
+</form>
